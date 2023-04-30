@@ -1,0 +1,140 @@
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #1371c8;
+    align-items: center;
+    font-family: 'Roboto';
+}
+
+.navbar-logo {
+    height: 25px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.nav-income {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* .nav-income :hover {
+    background-color: #0b3865;
+    border-radius: 30px;
+} */
+
+.nav-income div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+
+::placeholder {
+    color: #5995b8;
+}
+
+:-ms-input-placeholder {
+    color: #5995b8;
+}
+
+::-ms-input-placeholder {
+    color: #5995b8;
+}
+
+
+.nav-income span:nth-child(1) {
+    font-size: 11px;
+    color: #accdec;
+    margin-bottom: 3px;
+}
+
+.nav-income span:nth-child(2) {
+    font-size: 13px;
+}
+
+.nav-income img {
+    height: 20px;
+    margin-right: 10px;
+}
+
+.nav-search {
+    margin: 12px;
+    background-color: #0E5291;
+    padding-left: 10px;
+
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-search img {
+    height: 20px;
+    margin-right: 3px;
+}
+
+.nav-search input {
+    height: 100%;
+    background-color: #0E5291;
+    outline: none;
+    padding: 7px 0px 7px 0px;
+    border: none;
+    border-radius: 3px;
+    cursor: text;
+    line-height: 18px;
+    font-size: 14px;
+}
+
+.nav-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.navbar-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: #E5E5E5;
+    cursor: pointer;
+    margin-right: 15px;
+    padding: 6px 7px;
+    border-radius: 5px;
+}
+
+.navbar-btn:hover {
+    background-color: #0E5291;
+}
+
+.navbar-btn img {
+    height: 20px;
+    font-family: 'Helvetica';
+    margin-right: 8px;
+}
+
+.navbar-activate-plan {
+    color: #FFFFFF;
+    background-color: #FE7A5D;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.navbar-profile {
+    margin-right: 30px;
+    background: linear-gradient(225deg,rgba(255,255,255,.4) 15%,rgba(255,255,255,0) 87%),#ff9500;
+    border-radius: 20px;
+    padding: 5px 6px;
+    font-weight: normal;
+}
