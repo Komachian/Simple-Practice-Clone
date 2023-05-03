@@ -40,6 +40,7 @@ const Calendar: React.FC<Props> = ({ events, setEvents }) => {
                     info={date}
                     events={events}
                     setEvents={setEvents}
+                    setCreateOpen={setCreateOpen}
                 />
             </Modal>
             <Modal open={editOpen} onClose={() => setEditOpen(false)}>

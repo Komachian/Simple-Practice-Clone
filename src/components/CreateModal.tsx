@@ -10,12 +10,12 @@ import { DateClickArg } from "@fullcalendar/interaction";
 
 interface Props {
     info: DateClickArg | undefined;
-    events: {}[];
-
+    events: Event[];
     setEvents: React.Dispatch<React.SetStateAction<Event[]>>;
+    setCreateOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CreateModal: React.FC<Props> = ({ info, events, setEvents }) => {
+const CreateModal: React.FC<Props> = ({ info, events, setEvents, setCreateOpen }) => {
     const [title, setTitle] = useState<string>("");
     const [time, setTime] = useState<Date>(info!.date);
     const [duration, setDuration] = useState<number>(0)
@@ -37,7 +37,7 @@ const CreateModal: React.FC<Props> = ({ info, events, setEvents }) => {
             <input type="checkbox" id="all-day" />
             <label htmlFor="">All day</label>
             <br />
-            <DateTimePicker onChange={() => console.log("Hi")} value={time} />
+            <DateTimePicker onChange={(e) => {if(e){setTime(e)}}} value={time} />
             <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}}/>
             min
             <br />
@@ -49,8 +49,15 @@ const CreateModal: React.FC<Props> = ({ info, events, setEvents }) => {
             <input type="checkbox" id="repeat" />
             <label htmlFor="">Repeat</label>
             <hr />
-            <button>Cancel</button>
-            <button onClick={() => console.log(info)}>Done</button>
+            <button onClick={() => {setCreateOpen(false)}}>Cancel</button>
+            <button onClick={() => {setEvents([...events,
+            { 
+                title: title, 
+                start: time, 
+                end: new Date(time.getTime() + duration*60000), 
+              }
+            ]);
+            setCreateOpen(false)}}>Done</button>
         </div>
     );
 };
