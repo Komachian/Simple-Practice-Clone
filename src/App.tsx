@@ -9,35 +9,40 @@ import Meetings from './pages/Meetings';
 import './App.css';
 
 export type Event = {
-  // id: number, 
+  id: string, 
   title: string, 
   start: Date, 
-  end: Date, 
+  end: Date,
+  price: number;
+  location: string,
   // price: number;
 }
 
 const App: React.FC = () => {
   const [events, setEvents] = useState<Event[]>([
     { 
-      // id: 1, 
+      id: "1", 
       title: 'Brad Pitt', 
       start: new Date("2023-03-13T12:00:00+05:30"), 
       end: new Date("2023-03-13T12:30:00+05:30"), 
-      // price: 80 
+      price: 80,
+      location: 'Location: Unassigned',
     },
     { 
-      // id: 2, 
+      id: "2", 
       title: 'Adam Cohen', 
       start: new Date("2023-03-14T13:00:00+05:30"), 
       end: new Date("2023-03-13T13:45:00+05:30"), 
-      // price: 120 
+      price: 120,
+      location: 'Location: Unassigned',
     },
     { 
-      // id: 3, 
+      id: "3", 
       title: 'Angela Simpson', 
       start: new Date("2023-04-12T10:00:00+05:30"), 
       end: new Date("2023-03-13T11:00:00+05:30"), 
-      // price: 160 
+      price: 160,
+      location: 'Location: Unassigned',
     }, 
   ]);
   return (
@@ -49,8 +54,8 @@ const App: React.FC = () => {
       <div className='content'>
         <Routes>
           <Route path="/" element={<Calendar events={events} setEvents={setEvents}/>} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/meetings" element={<Meetings />} />
+          <Route path="/clients" element={<Clients events={events} />} />
+          <Route path="/meetings" element={<Meetings events={events} />} />
         </Routes>
       </div>
     </div>

@@ -21,7 +21,6 @@ const Calendar: React.FC<Props> = ({ events, setEvents }) => {
     const [editOpen, setEditOpen] = useState(false);
     const [event, setEvent] = useState<EventClickArg>();
     const [date, setDate] = useState<DateClickArg>();
-    console.log(events);
     function handleDateClick(info: DateClickArg) {
         setDate(info);
         setCreateOpen(true);
@@ -44,7 +43,7 @@ const Calendar: React.FC<Props> = ({ events, setEvents }) => {
                 />
             </Modal>
             <Modal open={editOpen} onClose={() => setEditOpen(false)}>
-                <EditModal info={event} />
+                <EditModal info={event} events={events} setEvents={setEvents} setEditOpen={setEditOpen}/>
             </Modal>
             <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
@@ -65,12 +64,11 @@ const Calendar: React.FC<Props> = ({ events, setEvents }) => {
     );
 };
 
-// a custom render function
 function renderEventContent(eventInfo: any) {
     return (
         <>
-            <b>{eventInfo.timeText}</b>
-            <i>{eventInfo.event.title}</i>
+            <span>{eventInfo.timeText}</span>
+            <b>{eventInfo.event.title}</b>
         </>
     );
 }

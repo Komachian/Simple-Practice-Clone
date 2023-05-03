@@ -1,6 +1,13 @@
 import React from 'react'
+import type { Event } from "../App";
 
-function Clients() {
+interface Props {
+    events: Event[];
+}
+
+const Clients: React.FC<Props> = ({ events }) => {
+    const unique = events.map((item) => item.title).filter((value, index, self) => self.indexOf(value) === index);
+
   return (
     <div>
         <h1>Clients and contacts</h1>
@@ -13,21 +20,20 @@ function Clients() {
             <th>Relationship</th>
             <th></th>
         </tr>
-        <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Adult</td>
-            <td>
-                <div>848421348</div>
-                <div>example@gmail.com</div>
-            </td>
-            <td>Clinician: John Watson</td>
-            <td><button>Manage</button></td>
-        </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-        </tr>
+        {unique.map((item) => {
+            return(
+                <tr>
+                <td>{item}</td>
+                <td>Adult</td>
+                <td>
+                    <div>848421348</div>
+                    <div>example@gmail.com</div>
+                </td>
+                <td>Clinician: John Watson</td>
+                <td><button>Manage</button></td>
+            </tr>
+            )
+        })}
         </table>
     </div>
   )

@@ -1,10 +1,29 @@
-import React from 'react'
+import React, {useState} from 'react'
+import type { Event } from "../App";
+import { EventClickArg } from "@fullcalendar/core";
+import DateTimePicker from "react-datetime-picker";
+import "react-datetime-picker/dist/DateTimePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "react-clock/dist/Clock.css";
 
-function EditModal(info: any) {
-    console.log(info.info)
+interface Props {
+  info: EventClickArg | undefined;
+  events: Event[];
+  setEvents: React.Dispatch<React.SetStateAction<Event[]>>;
+  setEditOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const EditModal: React.FC<Props> = ({ info, events, setEvents, setEditOpen }) => {
+  const [price, setPrice] = useState<number>(info!.event.extendedProps.price);
+  // const [duration, setDuration] = useState<number |>((info!.event.start.getTime() - info!.event.end?.getTime())/6000000);
+  const [location, setLocation] = useState<string>(info!.event.extendedProps.location);
+  const [time, setTime] = useState<Date | null>(info!.event.start);
+
+
+    console.log(info)
   return (
     <div>
-        <h1>{info.info.event.title}</h1>
+        <h1>{info!.event.title}</h1>
         <select>
             <option>Show</option>
             <option>No Show</option>
@@ -12,9 +31,29 @@ function EditModal(info: any) {
             <option>Late Cancelled</option>
             <option>Clinician Cancelled</option>
         </select>
-        
-        <button>Delete</button>
-        <button>Close</button>
+        <DateTimePicker onChange={(e) => {if(e){setTime(e)}}} value={time} />
+        {/* <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}}/> */}
+        <br/>
+        <input type='number' value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}}/>
+        <div>{info!.event.extendedProps.location}</div>
+        <button onClick={() => {
+          const eventList = events.filter((item) => item.id !== info!.event.id);
+          setEvents([...eventList]);
+          setEditOpen(false);
+        }}>Delete</button>
+        <button onClick={() => setEditOpen(false)}>Close</button>
+        <button onClick={() => {
+          let eventList = events;
+          eventList[eventList.findIndex((obj => obj.id == info!.event.id))] = {
+            ...eventList[eventList.findIndex((obj => obj.id == info!.event.id))],
+            // start: time, 
+            // end: new Date(time.getTime() + duration*60000), 
+            price: price,
+            location: location,
+          };
+          setEvents([...eventList])
+          setEditOpen(false);
+        }}>Done</button>
     </div>
   )
 }

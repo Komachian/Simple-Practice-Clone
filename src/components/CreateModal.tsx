@@ -18,7 +18,8 @@ interface Props {
 const CreateModal: React.FC<Props> = ({ info, events, setEvents, setCreateOpen }) => {
     const [title, setTitle] = useState<string>("");
     const [time, setTime] = useState<Date>(info!.date);
-    const [duration, setDuration] = useState<number>(0)
+    const [duration, setDuration] = useState<number>(0);
+    const [location, setLocation] = useState<string>('Location: Unassigned');
     console.log("Info", info!.date);
     return (
         <div>
@@ -41,9 +42,9 @@ const CreateModal: React.FC<Props> = ({ info, events, setEvents, setCreateOpen }
             <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}}/>
             min
             <br />
-            <select>
-                <option>Location: Unassigned</option>
-                <option>Telehealth: Video Office</option>
+            <select value={location} onChange={(e) => {setLocation(e.target.value)}}>
+                <option value={'Location: Unassigned'}>Location: Unassigned</option>
+                <option value={'Telehealth: Video Office'}>Telehealth: Video Office</option>
             </select>
             <br />
             <input type="checkbox" id="repeat" />
@@ -52,9 +53,12 @@ const CreateModal: React.FC<Props> = ({ info, events, setEvents, setCreateOpen }
             <button onClick={() => {setCreateOpen(false)}}>Cancel</button>
             <button onClick={() => {setEvents([...events,
             { 
+                id: '' + Math.random() * 100,
                 title: title, 
                 start: time, 
                 end: new Date(time.getTime() + duration*60000), 
+                price: 70,
+                location: location,
               }
             ]);
             setCreateOpen(false)}}>Done</button>

@@ -1,6 +1,12 @@
 import React from 'react'
+import type { Event } from "../App";
 
-function Meetings() {
+interface Props {
+    events: Event[];
+}
+
+const Meetings: React.FC<Props> = ({ events }) => {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   return (
     <div>
         <h1>Meetings scheduled</h1>
@@ -8,26 +14,24 @@ function Meetings() {
         <table>
         <tr>
             <th>Name</th>
+            <th>Location</th>
+            <th>Price</th>
+            <th>From</th>
+            <th>To</th>
             <th></th>
-            <th>Contact Info</th>
-            <th>Relationship</th>
-            <th></th>
         </tr>
-        <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Adult</td>
-            <td>
-                <div>848421348</div>
-                <div>example@gmail.com</div>
-            </td>
-            <td>Clinician: John Watson</td>
-            <td><button>Manage</button></td>
-        </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-        </tr>
+        {events.map((item) => {
+            return(
+            <tr>
+                <td>{item.title}</td>
+                <td>{item.location}</td>
+                <td>$ {item.price}</td>
+                <td>{item.start.toString()}</td>
+                <td>{item.end.toString()}</td>
+                <td><button>Manage</button></td>
+            </tr> 
+            )
+        })}
         </table>
     </div>
   )
