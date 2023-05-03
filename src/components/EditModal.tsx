@@ -5,6 +5,7 @@ import DateTimePicker from "react-datetime-picker";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
+import './styles/modal.css'
 
 interface Props {
   info: EventClickArg | undefined;
@@ -22,7 +23,7 @@ const EditModal: React.FC<Props> = ({ info, events, setEvents, setEditOpen }) =>
 
     console.log(info)
   return (
-    <div>
+    <div className="modal-container">
         <h1>{info!.event.title}</h1>
         <select>
             <option>Show</option>
@@ -34,14 +35,14 @@ const EditModal: React.FC<Props> = ({ info, events, setEvents, setEditOpen }) =>
         <DateTimePicker onChange={(e) => {if(e){setTime(e)}}} value={time} />
         {/* <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}}/> */}
         <br/>
-        <input type='number' value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}}/>
+        <input type='number' value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}} className='title-input'/>
         <div>{info!.event.extendedProps.location}</div>
         <button onClick={() => {
           const eventList = events.filter((item) => item.id !== info!.event.id);
           setEvents([...eventList]);
           setEditOpen(false);
         }}>Delete</button>
-        <button onClick={() => setEditOpen(false)}>Close</button>
+        <button onClick={() => setEditOpen(false)} className='cancel-btn'>Close</button>
         <button onClick={() => {
           let eventList = events;
           eventList[eventList.findIndex((obj => obj.id == info!.event.id))] = {
@@ -53,7 +54,8 @@ const EditModal: React.FC<Props> = ({ info, events, setEvents, setEditOpen }) =>
           };
           setEvents([...eventList])
           setEditOpen(false);
-        }}>Done</button>
+        }}
+        className='done-btn'>Done</button>
     </div>
   )
 }

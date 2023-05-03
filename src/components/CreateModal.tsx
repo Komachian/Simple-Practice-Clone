@@ -7,6 +7,7 @@ import type { Event } from "../App";
 import { setConstantValue } from "typescript";
 import { EventClickArg } from "@fullcalendar/core";
 import { DateClickArg } from "@fullcalendar/interaction";
+import './styles/modal.css'
 
 interface Props {
     info: DateClickArg | undefined;
@@ -22,7 +23,7 @@ const CreateModal: React.FC<Props> = ({ info, events, setEvents, setCreateOpen }
     const [location, setLocation] = useState<string>('Location: Unassigned');
     console.log("Info", info!.date);
     return (
-        <div>
+        <div className="modal-container">
             <h1>New Appointment</h1>
             <input type="radio" id="client" />
             <label htmlFor="">Client Appointment</label>
@@ -32,17 +33,19 @@ const CreateModal: React.FC<Props> = ({ info, events, setEvents, setCreateOpen }
             <input
                 type="text"
                 value={title}
+                placeholder='Client Name'
                 onChange={(e) => setTitle(e.target.value)}
+                className='title-input'
             />
             <hr />
             <input type="checkbox" id="all-day" />
             <label htmlFor="">All day</label>
             <br />
             <DateTimePicker onChange={(e) => {if(e){setTime(e)}}} value={time} />
-            <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}}/>
+            <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}} className='title-input'/>
             min
             <br />
-            <select value={location} onChange={(e) => {setLocation(e.target.value)}}>
+            <select className='title-input' value={location} onChange={(e) => {setLocation(e.target.value)}}>
                 <option value={'Location: Unassigned'}>Location: Unassigned</option>
                 <option value={'Telehealth: Video Office'}>Telehealth: Video Office</option>
             </select>
@@ -50,7 +53,7 @@ const CreateModal: React.FC<Props> = ({ info, events, setEvents, setCreateOpen }
             <input type="checkbox" id="repeat" />
             <label htmlFor="">Repeat</label>
             <hr />
-            <button onClick={() => {setCreateOpen(false)}}>Cancel</button>
+            <button onClick={() => {setCreateOpen(false)}} className='cancel-btn'>Cancel</button>
             <button onClick={() => {setEvents([...events,
             { 
                 id: '' + Math.random() * 100,
@@ -61,7 +64,8 @@ const CreateModal: React.FC<Props> = ({ info, events, setEvents, setCreateOpen }
                 location: location,
               }
             ]);
-            setCreateOpen(false)}}>Done</button>
+            setCreateOpen(false)}}
+            className='done-btn'>Done</button>
         </div>
     );
 };
