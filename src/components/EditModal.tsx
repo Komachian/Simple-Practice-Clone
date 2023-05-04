@@ -6,6 +6,7 @@ import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import './styles/modal.css'
+import trashIcon from './trash.svg'
 
 interface Props {
   info: EventClickArg | undefined;
@@ -36,8 +37,13 @@ const EditModal: React.FC<Props> = ({ info, events, setEvents, setEditOpen }) =>
         {/* <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}}/> */}
         <br/>
         <input type='number' value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}} className='title-input'/>
-        <div>{info!.event.extendedProps.location}</div>
-        <button onClick={() => {
+        <select className='title-input' value={location} onChange={(e) => {setLocation(e.target.value)}}>
+            <option value={'Location: Unassigned'}>Location: Unassigned</option>
+            <option value={'Telehealth: Video Office'}>Telehealth: Video Office</option>
+        </select>
+        <br />
+        <label htmlFor='delete-btn'><img src={trashIcon} /></label>
+        <button id='delete-btn' onClick={() => {
           const eventList = events.filter((item) => item.id !== info!.event.id);
           setEvents([...eventList]);
           setEditOpen(false);

@@ -1,0 +1,80 @@
+.modal-container {
+    font-size: 13px;
+    font-weight: 100;
+    font-family: 'Roboto', sans-serif;
+}
+
+.modal-container h1 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 32px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.modal-container input {
+    font-size: 13px;
+}
+
+.modal-container label {
+    font-size: 13px;
+    font-weight: 100;
+}
+
+.modal-container button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 32px;
+    padding: 6px 12px;
+    font-weight: 600;
+    line-height: 18px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin: 6px;
+}
+
+.cancel-btn {
+    background-color: #f2f2f4;
+    margin-left: auto !important;
+}
+
+.done-btn {
+    background-color: #1271C9;
+    color: #ffffff;
+}
+
+.title-input {
+    border: thin solid gray;
+
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 -1px 1.5px rgba(0,0,0,.03), 0 4px 8px rgba(0,0,0,.06);
+    padding: 5px 10px 5px 8px;
+    margin: 15px;
+}
+
+.react-datetime-picker__wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    border: thin solid gray;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 -1px 1.5px rgba(0,0,0,.03), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.modal-container img {
+    height: 15px;
+    margin-right: auto;
+}
+
+#delete-btn {
+    display: none;
+}

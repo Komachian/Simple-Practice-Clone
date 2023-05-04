@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Event } from "../App";
+import './styles/table.css'
 
 interface Props {
     events: Event[];
@@ -8,9 +9,9 @@ interface Props {
 const Meetings: React.FC<Props> = ({ events }) => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   return (
-    <div>
+    <div className='table-container'>
         <h1>Meetings scheduled</h1>
-        <span>Total Clients: 3</span>
+        <h2>Total Clients: 3</h2>
         <table>
         <tr>
             <th>Name</th>
@@ -23,9 +24,9 @@ const Meetings: React.FC<Props> = ({ events }) => {
         {events.map((item) => {
             return(
             <tr>
-                <td>{item.title}</td>
+                <td className='row-name'>{item.title}</td>
                 <td>{item.location}</td>
-                <td>$ {item.price}</td>
+                <td className='row-bold'>$ {item.price}</td>
                 <td>{item.start.toString()}</td>
                 <td>{item.end.toString()}</td>
                 <td><button>Manage</button></td>

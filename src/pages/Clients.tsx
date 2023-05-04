@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Event } from "../App";
+import './styles/table.css'
 
 interface Props {
     events: Event[];
@@ -9,9 +10,9 @@ const Clients: React.FC<Props> = ({ events }) => {
     const unique = events.map((item) => item.title).filter((value, index, self) => self.indexOf(value) === index);
 
   return (
-    <div>
+    <div className='table-container'>
         <h1>Clients and contacts</h1>
-        <span>Total Clients: 3</span>
+        <h2>Total Clients: 3</h2>
         <table>
         <tr>
             <th>Name</th>
@@ -20,11 +21,12 @@ const Clients: React.FC<Props> = ({ events }) => {
             <th>Relationship</th>
             <th></th>
         </tr>
+        {/* <hr /> */}
         {unique.map((item) => {
             return(
                 <tr>
-                <td>{item}</td>
-                <td>Adult</td>
+                <td className='row-name'>{item}</td>
+                <td className='row-bold'>Adult</td>
                 <td>
                     <div>848421348</div>
                     <div>example@gmail.com</div>
@@ -34,6 +36,7 @@ const Clients: React.FC<Props> = ({ events }) => {
             </tr>
             )
         })}
+        {/* <hr /> */}
         </table>
     </div>
   )
