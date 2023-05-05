@@ -44,7 +44,7 @@
 
 .cancel-btn {
     background-color: #f2f2f4;
-    margin-left: 60% !important;
+    margin-left: 50% !important;
 }
 
 .done-btn {
@@ -55,7 +55,7 @@
 .title-input {
     border: thin solid gray;
 
-    border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 4p 4px;
     box-shadow: 0 -1px 1.5px rgba(0,0,0,.03), 0 4px 8px rgba(0,0,0,.06);
     padding: 5px 10px 5px 8px;
     margin: 15px;
@@ -65,9 +65,11 @@
     display: flex;
     flex-grow: 1;
     flex-shrink: 0;
+    align-items: center;
     border: thin solid gray;
-    border-radius: 4px 4px 0 0;
+    border-radius: 2px 0px 0px 2px;
     box-shadow: 0 -1px 1.5px rgba(0,0,0,.03), 0 4px 8px rgba(0,0,0,.06);
+    height: 35px;
 }
 
 .modal-container img {
@@ -77,4 +79,29 @@
 
 #delete-btn {
     display: none;
+}
+
+.date-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+    /* height: fit-content; */
+    /* width: fit-content; */
+    margin: 10px 10px 0px 10px;
+}
+
+.duration-input {
+    border: thin solid gray;
+    border-radius: 0px 2px 2px 0px;
+    box-shadow: 0 -1px 1.5px rgba(0,0,0,.03), 0 4px 8px rgba(0,0,0,.06);
+    /* padding: 5px 10px 5px 8px; */
+    /* margin: 15px; */
+    height: 31px;
+    width: 60px;
+    margin-right: 5px;
+}
+
+.minute {
+    height: fit-content;
 }

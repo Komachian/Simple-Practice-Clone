@@ -41,9 +41,9 @@ const CreateModal: React.FC<Props> = ({ info, events, setEvents, setCreateOpen }
             <input type="checkbox" id="all-day" />
             <label htmlFor="">All day</label>
             <br />
-            <DateTimePicker onChange={(e) => {if(e){setTime(e)}}} value={time} />
-            <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}} className='title-input'/>
-            min
+            <div className='date-container'><DateTimePicker onChange={(e) => {if(e){setTime(e)}}} value={time} />
+            <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}} className='duration-input'/><label className='minute'>min</label>
+            </div>
             <br />
             <select className='title-input' value={location} onChange={(e) => {setLocation(e.target.value)}}>
                 <option value={'Location: Unassigned'}>Location: Unassigned</option>
