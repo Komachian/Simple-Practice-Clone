@@ -33,10 +33,12 @@ const EditModal: React.FC<Props> = ({ info, events, setEvents, setEditOpen }) =>
             <option>Late Cancelled</option>
             <option>Clinician Cancelled</option>
         </select>
+        <br />
         <DateTimePicker onChange={(e) => {if(e){setTime(e)}}} value={time} />
         {/* <input type="number" value={duration} onChange={(e) => {setDuration(parseInt(e.target.value))}}/> */}
         <br/>
         <input type='number' value={price} onChange={(e) => {setPrice(parseInt(e.target.value))}} className='title-input'/>
+        <br />
         <select className='title-input' value={location} onChange={(e) => {setLocation(e.target.value)}}>
             <option value={'Location: Unassigned'}>Location: Unassigned</option>
             <option value={'Telehealth: Video Office'}>Telehealth: Video Office</option>
