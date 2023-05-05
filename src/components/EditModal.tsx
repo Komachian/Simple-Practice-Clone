@@ -42,6 +42,7 @@ const EditModal: React.FC<Props> = ({ info, events, setEvents, setEditOpen }) =>
             <option value={'Telehealth: Video Office'}>Telehealth: Video Office</option>
         </select>
         <br />
+        
         <label htmlFor='delete-btn'><img src={trashIcon} /></label>
         <button id='delete-btn' onClick={() => {
           const eventList = events.filter((item) => item.id !== info!.event.id);
